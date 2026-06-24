@@ -5,257 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday Tannu</title>
     <style>
-        :root {
-            --primary: #ff4d6d;
-            --secondary: #ff758f;
-            --bg-gradient: linear-gradient(135deg, #ffe5ec 0%, #ffc2d1 50%, #ffb3c1 100%);
-        }
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #121212; /* Shuruat mein dark theme */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
-            transition: background 1s ease;
-        }
-        /* Lights on hone par ye class background badlegi */
-        body.light-up {
-            background: var(--bg-gradient);
-            color: #4a0e17;
-        }
-        .decorations {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            top: 0; left: 0;
-            pointer-events: none;
-            z-index: 1;
-            display: none;
-        }
-        body.light-up .decorations {
-            display: block;
-        }
-        .sticker {
-            position: absolute;
-            font-size: 2rem;
-            animation: floatSticker 6s ease-in-out infinite alternate;
-        }
-        @keyframes floatSticker {
-            0% { transform: translateY(0) rotate(0deg); }
-            100% { transform: translateY(-20px) rotate(15deg); }
-        }
-        .main-container {
-            width: 100%;
-            max-width: 450px;
-            min-height: 75vh;
-            background: #1a1a1a; /* Dark box container */
-            border: 1px solid #2d2d2d;
-            position: relative;
-            border-radius: 30px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-            margin: 15px;
-            overflow: hidden;
-            padding: 25px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 10;
-            transition: all 1s ease;
-        }
-        body.light-up .main-container {
-            background: rgba(255, 255, 255, 0.65);
-            backdrop-filter: blur(10px);
-            border: 2px solid #fff;
-            box-shadow: 0 15px 35px rgba(255, 77, 109, 0.2);
-        }
-        .step-panel {
-            display: none;
-            text-align: center;
-            width: 100%;
-            animation: fadeIn 0.8s ease-in-out forwards;
-        }
-        .step-panel.active {
-            display: block;
-        }
-        h1 {
-            color: var(--primary);
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-        }
-        body.light-up h1, body.light-up h2 {
-            color: #d90429;
-        }
-        p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            font-weight: 500;
-        }
-        .btn {
-            background: linear-gradient(135deg, #ff4d6d, #ff1a43);
-            color: white;
-            border: none;
-            padding: 15px 35px;
-            font-size: 1.05rem;
-            font-weight: bold;
-            border-radius: 30px;
-            cursor: pointer;
-            box-shadow: 0 5px 20px rgba(255, 77, 109, 0.4);
-            transition: 0.3s ease;
-        }
-        .btn:hover {
-            transform: scale(1.05);
-        }
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-top: 20px;
-            width: 100%;
-        }
-        .photo-card {
-            background: #fff;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            border: 2px solid #ffe5ec;
-        }
-        .photo-card img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            display: block;
-        }
-        .photo-desc {
-            padding: 8px;
-            font-size: 0.85rem;
-            color: #4a0e17;
-            font-weight: bold;
-            text-align: center;
-            background: #fff0f3;
-        }
-        .balloon-area {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none;
-            overflow: hidden;
-            z-index: 15;
-        }
-        .element {
-            position: absolute;
-            bottom: -100px;
-            animation: flyUp 5s linear infinite;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes flyUp {
-            0% { bottom: -100px; transform: translateX(0) rotate(0deg); opacity: 1; }
-            100% { bottom: 105%; transform: translateX(50px) rotate(360deg); opacity: 0; }
-        }
+        :root { --primary: #ff4d6d; }
+        body { margin: 0; padding: 0; background-color: #121212; font-family: sans-serif; color: #ffffff; display: flex; justify-content: center; align-items: center; min-height: 100vh; transition: background 1s ease; }
+        body.light-up { background: linear-gradient(135deg, #ffe5ec 0%, #ffc2d1 50%, #ffb3c1 100%); color: #4a0e17; }
+        .main-container { width: 100%; max-width: 450px; min-height: 75vh; background: #1a1a1a; border-radius: 30px; padding: 25px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; transition: all 1s ease; }
+        body.light-up .main-container { background: rgba(255, 255, 255, 0.7); }
+        .step-panel { display: none; width: 100%; }
+        .step-panel.active { display: block; }
+        .btn { background: var(--primary); color: white; border: none; padding: 15px 30px; font-weight: bold; border-radius: 30px; cursor: pointer; margin-top: 20px; }
+        .grid-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 20px; }
+        .photo-card { background: #fff; border-radius: 12px; overflow: hidden; padding: 5px; }
+        .photo-card img { width: 100%; height: 120px; object-fit: cover; border-radius: 8px; }
+        .photo-desc { font-size: 0.8rem; font-weight: bold; margin-top: 5px; color: #333; }
     </style>
 </head>
 <body>
 
-<div class="decorations">
-    <div class="sticker" style="top: 10%; left: 5%;">🐱</div>
-    <div class="sticker" style="top: 15%; right: 8%;">✨</div>
-    <div class="sticker" style="bottom: 12%; left: 8%;">💖</div>
-    <div class="sticker" style="bottom: 20%; right: 6%;">🐾</div>
-    <div class="sticker" style="top: 45%; left: 3%;">🎈</div>
-</div>
-
 <div class="main-container">
-    
     <div class="step-panel active" id="panel1">
         <h1>The Stage is Set... 🌟</h1>
-        <p>Aaj June 25 hai, aapki zindagi ka sabse special din... Kya aap ready ho? 🥰</p>
-        <button class="btn" onclick="turnOnLights(); nextStep(1, 2);">TURN ON LIGHTS 💡</button>
+        <button class="btn" onclick="document.body.classList.add('light-up'); document.getElementById('panel1').classList.remove('active'); document.getElementById('panel2').classList.add('active');">TURN ON LIGHTS 💡</button>
     </div>
 
     <div class="step-panel" id="panel2">
-        <h1>Let the Colors Fly! 🎈🐾</h1>
-        <p>Aapki khushiyon ke liye kuch udte hue gubaare aur cute kittens...</p>
-        <button class="btn" onclick="startCelebration(); nextStep(2, 3);">FLY MAGIC 🎉</button>
-    </div>
-
-    <div class="step-panel" id="panel3">
-        <h1>Almost There... 💞</h1>
-        <p>Ab parda uthega aur ek pyaara sa surprise saamne aayegi. ✨</p>
-        <button class="btn" onclick="nextStep(3, 4)">SHOW THE MESSAGE 💌</button>
-    </div>
-
-    <div class="step-panel" id="panel4" style="text-align: left;">
-        <div style="text-align: center; margin-bottom: 15px; font-size: 3rem;">🐱👑🐾</div>
-        <h2 style="color: #d90429; text-align: center; margin-bottom: 5px; font-size: 1.8rem;">Happy Birthday, Tannu!</h2>
-        <p style="font-style: italic; font-size: 0.95rem; text-align: center; color: #a4133c; margin-top: 0; font-weight: bold;">The Melody of My Life 💞</p>
-        
-        <div style="background: #fff5f7; padding: 20px; border-radius: 15px; border-left: 5px solid var(--primary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 20px; font-weight: 500; text-align: center;">
-            Zindagi mein aapka aana mere liye sabse bada tohfa hai. Aapki smile, aapki parwah aur aapki har ek baat meri duniya ko bohot khoobsurat banati hai. Khuda se bas yahi dua hai ki aap hamesha aise hi muskurati raho aur aapki zindagi khushiyon se bhari rahe. 🥰❤️
-        </div>
-
-        <p style="font-weight: bold; color: #d90429; text-align: center; font-size: 1.3rem; margin-bottom: 10px;">Happy Birthday meri jaan 🎂🎉🎁</p>
-        <p style="font-weight: bold; color: #ff2a54; text-align: center; font-size: 1.2rem; margin-bottom: 25px; line-height: 1.4;">Tum sirf meri taakat nahi, meri poori duniya ho. I love you so much.... Baby 🤍</p>
-
-        <h3 style="color: #5c111e; border-bottom: 2px solid #ffccd5; padding-bottom: 5px; font-size: 1.1rem; text-align: center;">Our Precious Moments 🐾</h3>
+        <h2 style="color: #d90429;">Happy Birthday, Tannu! 👑</h2>
+        <p>Zindagi mein aapka aana mere liye sabse bada tohfa hai. Aapki smile aur parwah meri duniya ko khoobsurat banati hai. Happy Birthday meri jaan! 🥰❤️</p>
         
         <div class="grid-container">
             <div class="photo-card">
-                <img src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=400&q=80" alt="Cute White Cat">
-                <div class="photo-desc">Cute White Cat 🐱</div>
+                <img src="https://i.ibb.co/Lp29Z4P/1000424997.jpg" alt="Cute Cat">
+                <div class="photo-desc">My Cute Cat 🐱</div>
             </div>
             <div class="photo-card">
-                <img src="https://images.unsplash.com/photo-1548907040-4d42b52145ca?w=400&q=80" alt="Chocolate Almond">
-                <div class="photo-desc">Chocolate Almond 🍫</div>
+                <img src="https://i.ibb.co/3kM2Z9z/1000424996.jpg" alt="Chocolate">
+                <div class="photo-desc">Almond Treat 🍫</div>
             </div>
             <div class="photo-card">
-                <img src="https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?w=400&q=80" alt="Beautiful Sky">
+                <img src="https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?w=400" alt="Sky">
                 <div class="photo-desc">Beautiful Sky ☁️</div>
             </div>
             <div class="photo-card">
-                <img src="https://images.unsplash.com/photo-1532693322450-2cb5c511067d?w=400&q=80" alt="The Moon">
+                <img src="https://images.unsplash.com/photo-1532693322450-2cb5c511067d?w=400" alt="Moon">
                 <div class="photo-desc">Beautiful Moon 🌙</div>
             </div>
         </div>
     </div>
-
-    <div class="balloon-area" id="celebrationArea"></div>
 </div>
-
-<script>
-    function turnOnLights() {
-        document.body.classList.add('light-up');
-    }
-
-    function nextStep(current, next) {
-        document.getElementById('panel' + current).classList.remove('active');
-        document.getElementById('panel' + next).classList.add('active');
-    }
-
-    function startCelebration() {
-        const area = document.getElementById('celebrationArea');
-        const items = ['🎈', '🐱', '❤️', '🐾', '✨', '💖'];
-        for (let i = 0; i < 30; i++) {
-            let el = document.createElement('div');
-            el.className = 'element';
-            el.innerHTML = items[Math.floor(Math.random() * items.length)];
-            el.style.left = Math.random() * 92 + '%';
-            el.style.animationDelay = Math.random() * 4 + 's';
-            el.style.fontSize = Math.random() * 1.5 + 1.2 + 'rem';
-            area.appendChild(el);
-        }
-    }
-</script>
 
 </body>
 </html>
