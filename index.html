@@ -13,7 +13,7 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #121212; /* Shuruat mein ekdam dark theme */
+            background-color: #121212; /* Shuruat mein dark theme */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #ffffff;
             display: flex;
@@ -24,7 +24,7 @@
             position: relative;
             transition: background 1s ease;
         }
-        /* Jab lights on hongi tab ye class body par lagegi */
+        /* Lights on hone par ye class background badlegi */
         body.light-up {
             background: var(--bg-gradient);
             color: #4a0e17;
@@ -37,10 +37,10 @@
             top: 0; left: 0;
             pointer-events: none;
             z-index: 1;
-            display: none; /* Pehle se chupe rahenge */
+            display: none;
         }
         body.light-up .decorations {
-            display: block; /* Lights on hone par hi dikhenge */
+            display: block;
         }
         .sticker {
             position: absolute;
@@ -55,7 +55,7 @@
             width: 100%;
             max-width: 450px;
             min-height: 75vh;
-            background: #1a1a1a; /* Pehle dark box */
+            background: #1a1a1a; /* Dark box container */
             border: 1px solid #2d2d2d;
             position: relative;
             border-radius: 30px;
@@ -71,7 +71,6 @@
             z-index: 10;
             transition: all 1s ease;
         }
-        /* Lights on hone par container ka look change hoga */
         body.light-up .main-container {
             background: rgba(255, 255, 255, 0.65);
             backdrop-filter: blur(10px);
@@ -168,7 +167,6 @@
 </head>
 <body>
 
-<!-- Cute Floating Stickers Background -->
 <div class="decorations">
     <div class="sticker" style="top: 10%; left: 5%;">🐱</div>
     <div class="sticker" style="top: 15%; right: 8%;">✨</div>
@@ -179,28 +177,24 @@
 
 <div class="main-container">
     
-    <!-- STEP 1: Turn On Lights (Dark Theme Se Shuruat) -->
     <div class="step-panel active" id="panel1">
         <h1>The Stage is Set... 🌟</h1>
         <p>Aaj June 25 hai, aapki zindagi ka sabse special din... Kya aap ready ho? 🥰</p>
         <button class="btn" onclick="turnOnLights(); nextStep(1, 2);">TURN ON LIGHTS 💡</button>
     </div>
 
-    <!-- STEP 2: Fly Balloons (Direct Option) -->
     <div class="step-panel" id="panel2">
         <h1>Let the Colors Fly! 🎈🐾</h1>
         <p>Aapki khushiyon ke liye kuch udte hue gubaare aur cute kittens...</p>
         <button class="btn" onclick="startCelebration(); nextStep(2, 3);">FLY MAGIC 🎉</button>
     </div>
 
-    <!-- STEP 3: Show Message -->
     <div class="step-panel" id="panel3">
         <h1>Almost There... 💞</h1>
-        <p>Ab parda uthega aur ek pyaara sa sirpriji samne aayega. ✨</p>
+        <p>Ab parda uthega aur ek pyaara sa surprise saamne aayegi. ✨</p>
         <button class="btn" onclick="nextStep(3, 4)">SHOW THE MESSAGE 💌</button>
     </div>
 
-    <!-- STEP 4: Final Clean Layout (No Personal Text, Just Simple Love Wishes) -->
     <div class="step-panel" id="panel4" style="text-align: left;">
         <div style="text-align: center; margin-bottom: 15px; font-size: 3rem;">🐱👑🐾</div>
         <h2 style="color: #d90429; text-align: center; margin-bottom: 5px; font-size: 1.8rem;">Happy Birthday, Tannu!</h2>
@@ -217,20 +211,20 @@
         
         <div class="grid-container">
             <div class="photo-card">
-                <img src="https://picsum.photos/300/300?random=11" alt="Memory 1">
-                <div class="photo-desc">My Cute Cat 🐱</div>
+                <img src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=400&q=80" alt="Cute White Cat">
+                <div class="photo-desc">Cute White Cat 🐱</div>
             </div>
             <div class="photo-card">
-                <img src="https://picsum.photos/300/300?random=12" alt="Memory 2">
-                <div class="photo-desc">Pure Happiness ✨</div>
+                <img src="https://images.unsplash.com/photo-1548907040-4d42b52145ca?w=400&q=80" alt="Chocolate Almond">
+                <div class="photo-desc">Chocolate Almond 🍫</div>
             </div>
             <div class="photo-card">
-                <img src="https://picsum.photos/300/300?random=13" alt="Memory 3">
-                <div class="photo-desc">Every Second 💞</div>
+                <img src="https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?w=400&q=80" alt="Beautiful Sky">
+                <div class="photo-desc">Beautiful Sky ☁️</div>
             </div>
             <div class="photo-card">
-                <img src="https://picsum.photos/300/300?random=14" alt="Memory 4">
-                <div class="photo-desc">Forever Mine 🔒🤍</div>
+                <img src="https://images.unsplash.com/photo-1532693322450-2cb5c511067d?w=400&q=80" alt="The Moon">
+                <div class="photo-desc">Beautiful Moon 🌙</div>
             </div>
         </div>
     </div>
@@ -240,7 +234,6 @@
 
 <script>
     function turnOnLights() {
-        // Body aur background ko colorful gradient mein badle
         document.body.classList.add('light-up');
     }
 
