@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Tannu</title>
+    <style>
+        :root {
+            --primary: #ff4d6d;
+            --bg-dark: #121212;
+            --card-bg: #1e1e1e;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-dark);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .main-container {
+            width: 100%;
+            max-width: 450px;
+            min-height: 90vh;
+            background: #1a1a1a;
+            position: relative;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+            margin: 15px;
+            overflow: hidden;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #2d2d2d;
+        }
+        .step-panel {
+            display: none;
+            text-align: center;
+            width: 100%;
+            animation: fadeIn 0.8s ease-in-out forwards;
+        }
+        .step-panel.active {
+            display: block;
+        }
+        h1 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #dddddd;
+            margin-bottom: 30px;
+        }
+        .btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+            transition: 0.3s ease;
+        }
+        .btn:hover {
+            transform: scale(1.05);
+            background: #ff1a43;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 20px;
+            width: 100%;
+        }
+        .photo-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #333;
+            position: relative;
+        }
+        .photo-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+        .photo-desc {
+            padding: 8px;
+            font-size: 0.85rem;
+            color: #bbb;
+            background: rgba(0,0,0,0.6);
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .balloon-area {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 5;
+        }
+        .balloon {
+            position: absolute;
+            bottom: -100px;
+            width: 30px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary);
+            animation: flyUp 4s linear infinite;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes flyUp {
+            0% { bottom: -100px; transform: translateX(0); opacity: 1; }
+            100% { bottom: 105%; transform: translateX(30px); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-container">
+    
+    <!-- STEP 1: Turn On Lights -->
+    <div class="step-panel active" id="panel1">
+        <h1>The Stage is Set...</h1>
+        <p>Kal ek bohot special din hai, kya aap ready ho?</p>
+        <button class="btn" onclick="nextStep(1, 2)">TURN ON LIGHTS</button>
+    </div>
+
+    <!-- STEP 2: Play Music -->
+    <div class="step-panel" id="panel2">
+        <h1>Music Makes It Better...</h1>
+        <p>Ek pyaari si melody chalate hain jo aapke naam jaisi sukoon deh hai.</p>
+        <button class="btn" onclick="nextStep(2, 3)">PLAY MUSIC</button>
+    </div>
+
+    <!-- STEP 3: Fly Balloons -->
+    <div class="step-panel" id="panel3">
+        <h1>Let the Colors Fly!</h1>
+        <p>Aapki khushiyon ke liye kuch udte hue gubaare...</p>
+        <button class="btn" onclick="startBalloons(); nextStep(3, 4);">FLY BALLOONS</button>
+    </div>
+
+    <!-- STEP 4: Show Message Button -->
+    <div class="step-panel" id="panel4">
+        <h1>Almost There...</h1>
+        <p>Ab parda uthega aur ek sachi dastan saamne aayegi.</p>
+        <button class="btn" onclick="nextStep(4, 5)">SHOW THE MESSAGE</button>
+    </div>
+
+    <!-- STEP 5: Final Layout With Your Text -->
+    <div class="step-panel" id="panel5" style="text-align: left;">
+        <h2 style="color: var(--primary); text-align: center; margin-bottom: 5px;">Happy Birthday, Tannu!</h2>
+        <p style="font-style: italic; font-size: 0.9rem; text-align: center; color: #888; margin-top: 0;">The Melody of My Life</p>
+        
+        <div style="background: #222; padding: 15px; border-radius: 10px; border-left: 4px solid var(--primary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">
+            Tannu... Aaj tumhare birthday par main sirf janamdin ki mubarakbaad nahi dena chahta, balki shukriya kehna chahta hoon. Shukriya meri zindagi mein aane ke liye. Log tumhari modern aur classy look dekhte hain, par mai tb tumhare andar ke us bacche ko dekhta hoon jo bacchon jaisi pyari baatein karta hai aur mere liye itni parwah chhupaye rakhta hai.
+        </div>
+
+        <div style="background: #222; padding: 15px; border-radius: 10px; border-left: 4px solid var(--primary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">
+            Jab tum kehti ho na ki tum mujhe aur kamyab dekhna chahti ho, toh border ki is hard duty par bhi mujhe sabse badi taakat milti hai. Bachpan mein jao main tumhare Dr. Papa ke darr ke baad bhi sirf tumhari ek jhalak ke liye school late ho jata tha, tab se lekar aaj tak, meri har khushi tumse hi shuru hoti hai.
+        </div>
+
+        <p style="font-weight: bold; color: #ff4d6d; text-align: center; font-size: 1.1rem; margin-bottom: 10px;">Happy Birthday meri jaan 🎂🎉🎁</p>
+        <p style="font-weight: bold; color: #ff4d6d; text-align: center; font-size: 1.1rem; margin-bottom: 25px;">Tum sirf meri taakat nahi, meri poori duniya ho. I love you so much.... Baby 🤍</p>
+
+        <h3 style="color: #fff; border-bottom: 1px solid #333; padding-bottom: 5px; font-size: 1.1rem; text-align: center;">Moments in Time</h3>
+        
+        <!-- Photo Grid Section -->
+        <div class="grid-container">
+            <div class="photo-card">
+                <img src="https://picsum.photos/300/300?random=1" alt="Memory 1">
+                <div class="photo-desc">You make my world beautiful</div>
+            </div>
+            <div class="photo-card">
+                <img src="https://picsum.photos/300/300?random=2" alt="Memory 2">
+                <div class="photo-desc">My favorite smile</div>
+            </div>
+            <div class="photo-card">
+                <img src="https://picsum.photos/300/300?random=3" alt="Memory 3">
+                <div class="photo-desc">Every second with you is a gift</div>
+            </div>
+            <div class="photo-card">
+                <img src="https://picsum.photos/300/300?random=4" alt="Memory 4">
+                <div class="photo-desc">Our memories are forever</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Container for dynamic balloons -->
+    <div class="balloon-area" id="balloonArea"></div>
+</div>
+
+<!-- Background Audio -->
+<audio id="bgMusic" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" loop></audio>
+
+<script>
+    function nextStep(current, next) {
+        document.getElementById('panel' + current).classList.remove('active');
+        document.getElementById('panel' + next).classList.add('active');
+        
+        if(current === 2) {
+            var audio = document.getElementById('bgMusic');
+            audio.play().catch(function(error) {
+                console.log("Audio autoplay block fix trigger");
+            });
+        }
+    }
+
+    function startBalloons() {
+        const area = document.getElementById('balloonArea');
+        const colors = ['#ff4d6d', '#ff758f', '#ffb3c1', '#ffccd5', '#ff85a2'];
+        for (let i = 0; i < 20; i++) {
+            let balloon = document.createElement('div');
+            balloon.className = 'balloon';
+            balloon.style.left = Math.random() * 90 + '%';
+            balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            balloon.style.animationDelay = Math.random() * 3 + 's';
+            balloon.style.width = Math.random() * 15 + 20 + 'px';
+            balloon.style.height = balloon.style.width;
+            area.appendChild(balloon);
+        }
+    }
+</script>
+
+</body>
+</html>
