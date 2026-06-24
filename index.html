@@ -98,15 +98,6 @@
         .btn:hover {
             transform: scale(1.05);
         }
-        .video-wrapper {
-            margin: 20px auto;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-            border: 3px solid #fff;
-            max-width: 100%;
-            display: inline-block;
-        }
         .grid-container {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -169,42 +160,30 @@
 
 <div class="main-container">
     
-    <!-- STEP 1 -->
     <div class="step-panel active" id="panel1">
         <h1>The Stage is Set... 🌟</h1>
         <p>Aaj June 25 hai, aapki zindagi ka sabse special din... Kya aap ready ho, Tannu? 🥰</p>
         <button class="btn" onclick="nextStep(1, 2)">TURN ON LIGHTS 💡</button>
     </div>
 
-    <!-- STEP 2 -->
     <div class="step-panel" id="panel2">
-        <h1>Play Your Favorite Melody... 🎵</h1>
-        <p>Niche player mein play button dba kar apna gaana chalu karein aur fir aage badhein! ✨</p>
-        
-        <div class="video-wrapper">
-            <!-- Fixed Embedded Link for Baarish Song -->
-            <iframe width="280" height="160" src="https://www.youtube.com/embed/bnq7_fdS0vY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-        
-        <br><br>
-        <button class="btn" onclick="nextStep(2, 3)">NEXT STEP 🎶</button>
+        <h1>Music Makes It Better... 🎵</h1>
+        <p>Ek pyaari si melody chalate hain jo aapke naam jaisi sukoon deh hai. ✨</p>
+        <button class="btn" onclick="playMusicNow(); nextStep(2, 3);">PLAY MUSIC 🎶</button>
     </div>
 
-    <!-- STEP 3 -->
     <div class="step-panel" id="panel3">
         <h1>Let the Colors Fly! 🎈🐾</h1>
         <p>Aapki khushiyon ke liye kuch udte hue gubaare aur cute kittens...</p>
         <button class="btn" onclick="startCelebration(); nextStep(3, 4);">FLY MAGIC 🎉</button>
     </div>
 
-    <!-- STEP 4 -->
     <div class="step-panel" id="panel4">
         <h1>Almost There... 💞</h1>
         <p>Ab parda uthega aur ek sachi dastan saamne aayegi. ✨</p>
         <button class="btn" onclick="nextStep(4, 5)">SHOW THE MESSAGE 💌</button>
     </div>
 
-    <!-- STEP 5 -->
     <div class="step-panel" id="panel5" style="text-align: left;">
         <div style="text-align: center; margin-bottom: 15px; font-size: 3rem;">🐱👑🐾</div>
         <h2 style="color: #d90429; text-align: center; margin-bottom: 5px; font-size: 1.8rem;">Happy Birthday, Tannu!</h2>
@@ -246,10 +225,21 @@
     <div class="balloon-area" id="celebrationArea"></div>
 </div>
 
+<audio id="bgMusic" src="https://pagalfree.com/musics/128-Baarish%20-%20Half%20Girlfriend%20128%20Kbps.mp3" loop crossorigin="anonymous"></audio>
+
 <script>
     function nextStep(current, next) {
         document.getElementById('panel' + current).classList.remove('active');
         document.getElementById('panel' + next).classList.add('active');
+    }
+
+    function playMusicNow() {
+        var audio = document.getElementById('bgMusic');
+        audio.play().then(function() {
+            console.log("Music playing successfully");
+        }).catch(function(error) {
+            console.log("Playback error:", error);
+        });
     }
 
     function startCelebration() {
