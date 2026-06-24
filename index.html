@@ -9,20 +9,25 @@
             --primary: #ff4d6d;
             --secondary: #ff758f;
             --bg-gradient: linear-gradient(135deg, #ffe5ec 0%, #ffc2d1 50%, #ffb3c1 100%);
-            --card-bg: rgba(255, 255, 255, 0.85);
         }
         body {
             margin: 0;
             padding: 0;
-            background: var(--bg-gradient);
+            background-color: #121212; /* Shuruat mein ekdam dark theme */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #4a0e17;
+            color: #ffffff;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
+            transition: background 1s ease;
+        }
+        /* Jab lights on hongi tab ye class body par lagegi */
+        body.light-up {
+            background: var(--bg-gradient);
+            color: #4a0e17;
         }
         .decorations {
             position: absolute;
@@ -32,6 +37,10 @@
             top: 0; left: 0;
             pointer-events: none;
             z-index: 1;
+            display: none; /* Pehle se chupe rahenge */
+        }
+        body.light-up .decorations {
+            display: block; /* Lights on hone par hi dikhenge */
         }
         .sticker {
             position: absolute;
@@ -45,12 +54,12 @@
         .main-container {
             width: 100%;
             max-width: 450px;
-            min-height: 85vh;
-            background: rgba(255, 255, 255, 0.65);
-            backdrop-filter: blur(10px);
+            min-height: 75vh;
+            background: #1a1a1a; /* Pehle dark box */
+            border: 1px solid #2d2d2d;
             position: relative;
             border-radius: 30px;
-            box-shadow: 0 15px 35px rgba(255, 77, 109, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
             margin: 15px;
             overflow: hidden;
             padding: 25px;
@@ -59,8 +68,15 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            border: 2px solid #fff;
             z-index: 10;
+            transition: all 1s ease;
+        }
+        /* Lights on hone par container ka look change hoga */
+        body.light-up .main-container {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(10px);
+            border: 2px solid #fff;
+            box-shadow: 0 15px 35px rgba(255, 77, 109, 0.2);
         }
         .step-panel {
             display: none;
@@ -72,14 +88,16 @@
             display: block;
         }
         h1 {
-            color: #d90429;
+            color: var(--primary);
             font-size: 2.2rem;
             margin-bottom: 20px;
+        }
+        body.light-up h1, body.light-up h2 {
+            color: #d90429;
         }
         p {
             font-size: 1.1rem;
             line-height: 1.6;
-            color: #5c111e;
             margin-bottom: 30px;
             font-weight: 500;
         }
@@ -150,6 +168,7 @@
 </head>
 <body>
 
+<!-- Cute Floating Stickers Background -->
 <div class="decorations">
     <div class="sticker" style="top: 10%; left: 5%;">🐱</div>
     <div class="sticker" style="top: 15%; right: 8%;">✨</div>
@@ -160,44 +179,38 @@
 
 <div class="main-container">
     
+    <!-- STEP 1: Turn On Lights (Dark Theme Se Shuruat) -->
     <div class="step-panel active" id="panel1">
         <h1>The Stage is Set... 🌟</h1>
-        <p>Aaj June 25 hai, aapki zindagi ka sabse special din... Kya aap ready ho, Tannu? 🥰</p>
-        <button class="btn" onclick="nextStep(1, 2)">TURN ON LIGHTS 💡</button>
+        <p>Aaj June 25 hai, aapki zindagi ka sabse special din... Kya aap ready ho? 🥰</p>
+        <button class="btn" onclick="turnOnLights(); nextStep(1, 2);">TURN ON LIGHTS 💡</button>
     </div>
 
+    <!-- STEP 2: Fly Balloons (Direct Option) -->
     <div class="step-panel" id="panel2">
-        <h1>Music Makes It Better... 🎵</h1>
-        <p>Ek pyaari si melody chalate hain jo aapke naam jaisi sukoon deh hai. ✨</p>
-        <button class="btn" onclick="playMusicNow(); nextStep(2, 3);">PLAY MUSIC 🎶</button>
-    </div>
-
-    <div class="step-panel" id="panel3">
         <h1>Let the Colors Fly! 🎈🐾</h1>
         <p>Aapki khushiyon ke liye kuch udte hue gubaare aur cute kittens...</p>
-        <button class="btn" onclick="startCelebration(); nextStep(3, 4);">FLY MAGIC 🎉</button>
+        <button class="btn" onclick="startCelebration(); nextStep(2, 3);">FLY MAGIC 🎉</button>
     </div>
 
-    <div class="step-panel" id="panel4">
+    <!-- STEP 3: Show Message -->
+    <div class="step-panel" id="panel3">
         <h1>Almost There... 💞</h1>
-        <p>Ab parda uthega aur ek sachi dastan saamne aayegi. ✨</p>
-        <button class="btn" onclick="nextStep(4, 5)">SHOW THE MESSAGE 💌</button>
+        <p>Ab parda uthega aur ek pyaara sa sirpriji samne aayega. ✨</p>
+        <button class="btn" onclick="nextStep(3, 4)">SHOW THE MESSAGE 💌</button>
     </div>
 
-    <div class="step-panel" id="panel5" style="text-align: left;">
+    <!-- STEP 4: Final Clean Layout (No Personal Text, Just Simple Love Wishes) -->
+    <div class="step-panel" id="panel4" style="text-align: left;">
         <div style="text-align: center; margin-bottom: 15px; font-size: 3rem;">🐱👑🐾</div>
         <h2 style="color: #d90429; text-align: center; margin-bottom: 5px; font-size: 1.8rem;">Happy Birthday, Tannu!</h2>
         <p style="font-style: italic; font-size: 0.95rem; text-align: center; color: #a4133c; margin-top: 0; font-weight: bold;">The Melody of My Life 💞</p>
         
-        <div style="background: #fff5f7; padding: 15px; border-radius: 15px; border-left: 5px solid var(--primary); font-size: 1rem; line-height: 1.6; margin-bottom: 15px; font-weight: 500;">
-            Tannu... Aaj tumhare birthday par main sirf janamdin ki mubarakbaad nahi dena chahta, balki shukriya kehna chahta hoon. Shukriya meri zindagi mein aane ke liye. Log tumhari modern aur classy look dekhte hain, par mai tb tumhare andar ke us bacche ko dekhta hoon jo bacchon jaisi pyari baatein karta hai aur mere liye itni parwah chhupaye rakhta hai.
+        <div style="background: #fff5f7; padding: 20px; border-radius: 15px; border-left: 5px solid var(--primary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 20px; font-weight: 500; text-align: center;">
+            Zindagi mein aapka aana mere liye sabse bada tohfa hai. Aapki smile, aapki parwah aur aapki har ek baat meri duniya ko bohot khoobsurat banati hai. Khuda se bas yahi dua hai ki aap hamesha aise hi muskurati raho aur aapki zindagi khushiyon se bhari rahe. 🥰❤️
         </div>
 
-        <div style="background: #fff5f7; padding: 15px; border-radius: 15px; border-left: 5px solid var(--primary); font-size: 1rem; line-height: 1.6; margin-bottom: 20px; font-weight: 500;">
-            Jab tum kehti ho na ki tum mujhe aur kamyab dekhna chahti ho, toh border ki is hard duty par bhi mujhe sabse badi taakat milti hai. Bachpan mein jab main tumhare Dr. Papa ke darr ke baad bhi sirf tumhari ek jhalak ke liye school late ho jata tha, tab se lekar aaj tak, meri har khushi tumse hi shuru hoti hai.
-        </div>
-
-        <p style="font-weight: bold; color: #d90429; text-align: center; font-size: 1.25rem; margin-bottom: 10px;">Happy Birthday meri jaan 🎂🎉🎁</p>
+        <p style="font-weight: bold; color: #d90429; text-align: center; font-size: 1.3rem; margin-bottom: 10px;">Happy Birthday meri jaan 🎂🎉🎁</p>
         <p style="font-weight: bold; color: #ff2a54; text-align: center; font-size: 1.2rem; margin-bottom: 25px; line-height: 1.4;">Tum sirf meri taakat nahi, meri poori duniya ho. I love you so much.... Baby 🤍</p>
 
         <h3 style="color: #5c111e; border-bottom: 2px solid #ffccd5; padding-bottom: 5px; font-size: 1.1rem; text-align: center;">Our Precious Moments 🐾</h3>
@@ -225,21 +238,15 @@
     <div class="balloon-area" id="celebrationArea"></div>
 </div>
 
-<audio id="bgMusic" src="https://pagalfree.com/musics/128-Baarish%20-%20Half%20Girlfriend%20128%20Kbps.mp3" loop crossorigin="anonymous"></audio>
-
 <script>
+    function turnOnLights() {
+        // Body aur background ko colorful gradient mein badle
+        document.body.classList.add('light-up');
+    }
+
     function nextStep(current, next) {
         document.getElementById('panel' + current).classList.remove('active');
         document.getElementById('panel' + next).classList.add('active');
-    }
-
-    function playMusicNow() {
-        var audio = document.getElementById('bgMusic');
-        audio.play().then(function() {
-            console.log("Music playing successfully");
-        }).catch(function(error) {
-            console.log("Playback error:", error);
-        });
     }
 
     function startCelebration() {
