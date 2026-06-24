@@ -138,6 +138,14 @@
             bottom: -100px;
             animation: flyUp 5s linear infinite;
         }
+        /* Hidden YouTube Container */
+        #youtube-player-container {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+            pointer-events: none;
+        }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -169,7 +177,7 @@
     <div class="step-panel" id="panel2">
         <h1>Music Makes It Better... 🎵</h1>
         <p>Ek pyaari si melody chalate hain jo aapke naam jaisi sukoon deh hai. ✨</p>
-        <button class="btn" onclick="nextStep(2, 3)">PLAY MUSIC 🎶</button>
+        <button class="btn" onclick="playOriginalSong(); nextStep(2, 3);">PLAY MUSIC 🎶</button>
     </div>
 
     <div class="step-panel" id="panel3">
@@ -225,19 +233,39 @@
     <div class="balloon-area" id="celebrationArea"></div>
 </div>
 
-<!-- ACTUAL BAARISH SONG BY ASH KING (FIXED URL) -->
-<audio id="bgMusic" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" loop></audio>
+<!-- Hidden Player for Original Baarish Song -->
+<div id="youtube-player-container">
+    <iframe id="ytPlayer" width="100" height="100" src="https://www.youtube.com/embed/tCXGJQYZ9JA?enablejsapi=1" frameborder="0" allow="autoplay"></iframe>
+</div>
 
 <script>
+    // Load YouTube IFrame Player API
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    var player;
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('ytPlayer', {
+            events: {
+                'onReady': function() { console.log("Player Ready"); }
+            }
+        });
+    }
+
     function nextStep(current, next) {
         document.getElementById('panel' + current).classList.remove('active');
         document.getElementById('panel' + next).classList.add('active');
-        
-        if(current === 2) {
-            var audio = document.getElementById('bgMusic');
-            audio.play().catch(function(error) {
-                console.log("Audio play failed", error);
-            });
+    }
+
+    function playOriginalSong() {
+        if (player && typeof player.playVideo === 'function') {
+            player.playVideo();
+        } else {
+            // Fallback strategy if API is delayed
+            var iframe = document.getElementById('ytPlayer');
+            iframe.src += "&autoplay=1";
         }
     }
 
